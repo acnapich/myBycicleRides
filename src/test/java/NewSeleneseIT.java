@@ -27,7 +27,8 @@ public class NewSeleneseIT {
         WebDriver driver = new ChromeDriver();
 
         // And now use this to visit NetBeans
-        driver.get("http://www.netbeans.org");
+        //driver.get("http://www.netbeans.org");
+        driver.get("http://localhost:8080/MavenMyBycicleRides/");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.netbeans.org");
 
@@ -36,7 +37,7 @@ public class NewSeleneseIT {
         (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
             @Override
             public Boolean apply(WebDriver d) {
-                return d.getTitle().contains("NetBeans");
+                return d.getTitle().contains("Bicycle");
             }
         });
 
