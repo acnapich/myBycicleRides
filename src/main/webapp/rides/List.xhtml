@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListRidesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListRidesEmpty}" rendered="#{ridesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{ridesController.items.rowCount > 0}">
+                    <h:outputText value="#{ridesController.pagination.pageFirstItem + 1}..#{ridesController.pagination.pageLastItem + 1}/#{ridesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{ridesController.previous}" value="#{bundle.Previous} #{ridesController.pagination.pageSize}" rendered="#{ridesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{ridesController.next}" value="#{bundle.Next} #{ridesController.pagination.pageSize}" rendered="#{ridesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{ridesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRidesTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRidesTitle_km}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.km}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRidesTitle_time}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.time}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRidesTitle_link}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.link}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRidesTitle_data}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.data}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{ridesController.prepareView}" value="#{bundle.ListRidesViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{ridesController.prepareEdit}" value="#{bundle.ListRidesEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{ridesController.destroy}" value="#{bundle.ListRidesDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{ridesController.prepareCreate}" value="#{bundle.ListRidesCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListRidesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

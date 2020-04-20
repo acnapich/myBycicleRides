@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRidesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRidesLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{ridesController.selected.id}" title="#{bundle.EditRidesTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditRidesLabel_km}" for="km" />
+                    <h:inputText id="km" value="#{ridesController.selected.km}" title="#{bundle.EditRidesTitle_km}" />
+                    <h:outputLabel value="#{bundle.EditRidesLabel_time}" for="time" />
+                    <h:inputText id="time" value="#{ridesController.selected.time}" title="#{bundle.EditRidesTitle_time}" />
+                    <h:outputLabel value="#{bundle.EditRidesLabel_link}" for="link" />
+                    <h:inputText id="link" value="#{ridesController.selected.link}" title="#{bundle.EditRidesTitle_link}" />
+                    <h:outputLabel value="#{bundle.EditRidesLabel_data}" for="data" />
+                    <h:inputText id="data" value="#{ridesController.selected.data}" title="#{bundle.EditRidesTitle_data}" />
+                </h:panelGrid>
+                <h:commandLink action="#{ridesController.update}" value="#{bundle.EditRidesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRidesViewLink}"/>
+                <br />
+                <h:commandLink action="#{ridesController.prepareList}" value="#{bundle.EditRidesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRidesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
