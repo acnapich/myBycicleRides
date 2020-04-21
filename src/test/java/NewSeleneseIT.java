@@ -29,7 +29,7 @@ public class NewSeleneseIT {
         // And now use this to visit NetBeans
         //driver.get("http://www.netbeans.org");
         //driver.get("http://localhost:8080/MavenMyBycicleRides/");
-        driver.get("http://localhost:8080/MavenMyBycicleRides/faces/index.xhtml");
+        driver.get("http://localhost:8282/MavenMyBycicleRides/faces/index.xhtml");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.netbeans.org");
 
