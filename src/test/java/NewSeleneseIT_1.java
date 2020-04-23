@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  *
  * @author acnapich
  */
-public class NewSeleneseIT {
+public class NewSeleneseIT_1 {
     
     @Test
     public void testSimple() throws Exception {
@@ -27,28 +27,23 @@ public class NewSeleneseIT {
         
         WebDriver driver = new ChromeDriver();
 
-        // And now use this to visit NetBeans
-        //driver.get("http://www.netbeans.org");
         driver.get("http://localhost:8282/MavenMyBycicleRides/faces/index.xhtml");
-        //driver.get("http://localhost:8282/MavenMyBycicleRides/faces/index.xhtml");
-        // Alternatively the same thing can be done like this
-        // driver.navigate().to("http://www.netbeans.org");
-
-        //Thread.sleep(4000);
-        //driver.findElement(By.id("details-button")).click();
-        //Thread.sleep(4000);
         
-        //driver.findElement(By.id("proceed-link")).click();
-        //Thread.sleep(4000);
-        // Check the title of the page
-        // Wait for the page to load, timeout after 10 seconds
-        (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
-            @Override
-            public Boolean apply(WebDriver d) {
-                return d.getTitle().contains("Bicycle");
-            }
-        });
-
+        Thread.sleep(4000);
+        driver.findElement(By.xpath("/html/body/a")).click();
+        Thread.sleep(4000);
+        
+        driver.findElement(By.xpath("//*[@id=\"j_idt11\"]/a[1]")).click();
+        Thread.sleep(4000);
+        
+        driver.findElement(By.xpath("//*[@id=\"j_idt12:id\"]")).clear();
+        driver.findElement(By.xpath("//*[@id=\"j_idt12:id\"]")).sendKeys("3");
+        Thread.sleep(4000);
+        
+        driver.findElement(By.xpath("//*[@id=\"j_idt12:km\"]")).clear();
+        driver.findElement(By.xpath("//*[@id=\"j_idt12:km\"]")).sendKeys("10.0");
+        Thread.sleep(4000);
+        
         //Close the browser
         driver.quit();
     }
