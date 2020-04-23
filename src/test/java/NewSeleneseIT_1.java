@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -29,22 +30,52 @@ public class NewSeleneseIT_1 {
 
         driver.get("http://localhost:8282/MavenMyBycicleRides/faces/index.xhtml");
         
-        Thread.sleep(4000);
+        Thread.sleep(1000);
         driver.findElement(By.xpath("/html/body/a")).click();
-        Thread.sleep(4000);
+        Thread.sleep(1000);
         
         driver.findElement(By.xpath("//*[@id=\"j_idt11\"]/a[1]")).click();
-        Thread.sleep(4000);
+        Thread.sleep(1000);
         
         driver.findElement(By.xpath("//*[@id=\"j_idt12:id\"]")).clear();
         driver.findElement(By.xpath("//*[@id=\"j_idt12:id\"]")).sendKeys("3");
-        Thread.sleep(4000);
+        Thread.sleep(1000);
         
         driver.findElement(By.xpath("//*[@id=\"j_idt12:km\"]")).clear();
-        driver.findElement(By.xpath("//*[@id=\"j_idt12:km\"]")).sendKeys("10.0");
-        Thread.sleep(4000);
+        driver.findElement(By.xpath("//*[@id=\"j_idt12:km\"]")).sendKeys("15.61");
+        Thread.sleep(1000);
+     
+        driver.findElement(By.xpath("//*[@id=\"j_idt12:time\"]")).clear();
+        driver.findElement(By.xpath("//*[@id=\"j_idt12:time\"]")).sendKeys("50.00");
+        Thread.sleep(1000);
+    
+        driver.findElement(By.xpath("//*[@id=\"j_idt12:link\"]")).clear();
+        driver.findElement(By.xpath("//*[@id=\"j_idt12:link\"]")).sendKeys("https://www.strava.com/activities/3221023288");
+        Thread.sleep(1000);
+
+        driver.findElement(By.xpath("//*[@id=\"j_idt12:data\"]")).clear();
+        driver.findElement(By.xpath("//*[@id=\"j_idt12:data\"]")).sendKeys("26/03/2020");
+        Thread.sleep(1000);        
+
+        driver.findElement(By.xpath("//*[@id=\"j_idt12\"]/a[1]")).click();
+        Thread.sleep(1000);        
+ 
+        driver.findElement(By.xpath("//*[@id=\"j_idt12\"]/a[2]")).click();
+        Thread.sleep(1000);        
+ 
+        driver.findElement(By.xpath("//*[@id=\"j_idt11\"]/table/tbody/tr[3]/td[6]/a[3]")).click();
+        Thread.sleep(1000);        
+
         
-        //Close the browser
+        boolean cancellato = false;
+        
+        String valore = driver.findElement(By.xpath("//*[@id=\"j_idt11:messagePanel\"]/table/tbody/tr/td")).getText();
+        System.out.println(valore);
+        if (valore.equals("Rides was successfully deleted.")) {
+            cancellato = true;
+        }
+        Assert.assertEquals(true, cancellato);
+        
         driver.quit();
     }
     
