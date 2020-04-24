@@ -17,12 +17,16 @@
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewRidesLabel_id}"/>
                     <h:outputText value="#{ridesController.selected.id}" title="#{bundle.ViewRidesTitle_id}"/>
+                    
                     <h:outputText value="#{bundle.ViewRidesLabel_km}"/>
                     <h:outputText value="#{ridesController.selected.km}" title="#{bundle.ViewRidesTitle_km}"/>
+                    
                     <h:outputText value="#{bundle.ViewRidesLabel_time}"/>
                     <h:outputText value="#{ridesController.selected.time}" title="#{bundle.ViewRidesTitle_time}"/>
+                    
                     <h:outputText value="#{bundle.ViewRidesLabel_link}"/>
-                    <h:outputText value="#{ridesController.selected.link}" title="#{bundle.ViewRidesTitle_link}"/>
+                    <h:outputLink value="#{ridesController.selected.link}">#{ridesController.selected.link}</h:outputLink>
+                    
                     <h:outputText value="#{bundle.ViewRidesLabel_data}"/>
                     <h:outputText value="#{ridesController.selected.data}" title="#{bundle.ViewRidesTitle_data}"/>
                 </h:panelGrid>

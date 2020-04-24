@@ -42,7 +42,8 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListRidesTitle_link}"/>
                             </f:facet>
-                            <h:outputText value="#{item.link}"   />
+                            <h:outputLink value="#{item.link}">#{item.link}</h:outputLink>
+                            
                         </h:column>
                         <h:column>
                             <f:facet name="header">
